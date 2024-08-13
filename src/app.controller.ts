@@ -17,9 +17,10 @@ export class AppController {
 
     const paymentIntent = await stripe.paymentIntents.create({
       amount: body.amount,
-      currency: 'sgd',
+      currency: body.currency,
+      payment_method_types: ['card'],
       automatic_payment_methods: {
-        enabled: true,
+        enabled: false,
       },
     });
     return paymentIntent;
